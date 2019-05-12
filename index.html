@@ -10,6 +10,10 @@
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
     <!-- <script src="main.js"></script> -->
     <style>
+        html{
+            --site-background-color:hsl(234, 10%, 19%);
+            --content-primary-color:hsl(0,0%,95%);
+        }
         html, body{
             margin:0;
             padding:0;
@@ -19,12 +23,15 @@
         body{
             min-height:100%;
         }
+
+
         #container{
             display: block;
             min-height: 100%;
             padding: 0;
             margin: 0;
             position: relative;   
+            background-color:var(--site-background-color);
         }
         .section{
             display: block;
@@ -33,6 +40,19 @@
             padding: 0;
             margin: 0;
         }
+        .section[wide-gap]{
+            margin-top:3em;
+            margin-bottom:3em;
+            
+        }
+        .content{
+            max-width: 1400px;
+            width: 100%;
+            padding:0 1em;
+            margin:0 auto;
+        }
+
+
         #first_swoosh{
             height: 56vw;
             width: 100%;
@@ -103,7 +123,7 @@
             height: 300px;
         }
         .faux_mask{
-            fill:#fff;
+            fill:var(--site-background-color);
         }
 
         @keyframes grow{
@@ -120,6 +140,7 @@
             font-weight: 400;
             font-size: 18px;
             line-height: 1.4;
+            color:var(--content-primary-color);
         }
         h1{
             font-size: 3.5em;
@@ -164,10 +185,12 @@
             position: relative;
             margin-left: 100px;
         }
-
-        #container{
-            background-color:hsl(234, 10%, 19%);
+        .blurb[right]{
+            margin-left:auto;
+            margin-right:100px;
         }
+
+        
 
         #heading_content{
             display: block; 
@@ -197,7 +220,7 @@
             background:#7171cc;
             background: linear-gradient(160deg, #256194,#331077);
             border:1px solid transparent;
-            background-clip: border-box;
+            background-clip: content-box;
         }
         .top_svg{
             position:absolute;
@@ -236,43 +259,9 @@
             stroke:none;
             mix-blend-mode:multiply;    
         }
-        #p1,#p3,#p4,#p5{
-            transform-origin:bottom;
-            transform:none;
-            transition:transform 15s;
-            transition-timing-function: cubic-bezier(0.3, 0.00, 0.6, 1);
-        }
-    
-        .transform #p1{
-            transform:translateX(-5%) translateY(10%) scale(1.9, 1.3);
-        }
-        .transform #p3{
-            transform:translateY(1%) scale(2.3,1.1) skew(-8deg);
-        }
-        .transform #p4{
-            transform:translateY(21%) scale(1.7,1.2) skew(-6deg);
-        }
-        .transform #p5{
-            transform:translateY(23%) scale(1.3);
-        }
-
-        @media (prefers-reduced-motion: reduce){
-            #p1,#p3,#p4,#p5{
-                transition: none;
-            }
-        }
+        
             
     </style>
-    <script>
-        if(! window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-            requestAnimationFrame(_ => {
-                document.getElementById('svg1').classList.toggle('transform');
-                setInterval(_=>{
-                    document.getElementById('svg1').classList.toggle('transform');
-                }, 15000);
-            });
-        }
-    </script>
 </head>
 <body>
     <div id="container">
@@ -307,20 +296,56 @@
                         L 0,100
                         Z' />
             </svg>
-                <!-- <svg viewbox='0 0 100 100' id='svg2' class="top_svg">
-                <path 
-                    d='M0,60 
-                        C 40,60 50,10 100,50
-                        L 100,100
-                        L 0,100
-                        Z' />
-            </svg> -->
+                
             <div id='heading_content'>
                 <h1>Hi, my name is David</h1>
                 <h3>and I have been a Web Developer for 6 years. I love code and all the challenges and possibilities it offers.</h3>
             </div>
         </div>
 
+        <div class="section" wide-gap>
+            <div class="content">
+                <div class="blurb">
+                    <h2>Passion For Coding</h2>
+                    <h3 class='subheading'>Coding is powerful.</h3>
+                    <p>It's the only tool you need to solve challenging problems, create helpful utilities and meaningful experiences.
+                        Code isn't just the hammer, but also the tools you make the hammer with. To me,it is unparalleled in its versatility and utility.
+                    </p>
+                    <div class="block_quote">
+                        <p>"Any fool can write code that a computer can understand. Good programmers write code that humans can understand."</p>
+                        <p align-right>Martin Fowler</p>
+                    </div>
+                    <p>More than being passionate about what you can do with programming, I'm passionate about the code itself. It is an expression of creativity,
+                        not unlike a form of art, and it's beauty lay in its structure; how communicative, clear, and efficient it is are aspects of its aesthetics.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="section" wide-gap>
+            <div class="content">
+                <div class="blurb" right>
+                    <h2>Passion For Learning</h2>
+                    <h3 class='subheading'>The investment you make in yourself.</h3>
+                    Few things are as rewarding as learning a new technology or technique that you can leverage to actual benefit in your daily life; be it personal or
+                    professional. Whether it is SVG Filters, Service Worker, or graph traversal algorithms, I find learning to be a fun activity in its own right and that 
+                    it makes me a more well rounded developer. I try to spend at least a few days a month learning something new and find I thrive in an atmoshpere which 
+                    encourages this personal growth.
+                </div>
+            </div>
+        </div>
+        <div class="section" wide-gap>
+            <div class="content">
+                <div class="blurb">
+                    <h2>Passion For User Experience</h2>
+                    <h3 class='subheading'>Putting the user first.</h3>
+                    <p>One of the things which I find the most reward in is creating an interesting and fun user experience. Spending excessive amounts of time tweaking
+                        the easing of an animation until it feels "just right." But user experience is more than just flashy animations and effects on high-end desktops.
+                        It's the performance of animations, keeping them as close to 60FPS and jank free. Keeping Page load speed fast and responsive. Making the content
+                        accessible to a wider audience, including those with disabilities or impairment. 
+                    </p>
+                </div>
+            </div>
+        </div>
 
         <div id="first_swoosh" class="section swoosh">
             
@@ -410,44 +435,9 @@
             </div>
         
         </div>
-        <div class="section">
-            <div class="blurb">
-                <h2>Passion For Coding</h2>
-                <h3 class='subheading'>Coding is powerful.</h3>
-                <p>It's the only tool you need to solve challenging problems, create helpful utilities and meaningful experiences.
-                    Code isn't just the hammer, but also the tools you make the hammer with. To me,it is unparalleled in its versatility and utility.
-                </p>
-                <div class="block_quote">
-                    <p>"Any fool can write code that a computer can understand. Good programmers write code that humans can understand."</p>
-                    <p align-right>Martin Fowler</p>
-                </div>
-                <p>More than being passionate about what you can do with programming, I'm passionate about the code itself. It is an expression of creativity,
-                    not unlike a form of art, and it's beauty lay in its structure; how communicative, clear, and efficient it is are aspects of its aesthetics.
-                </p>
-            </div>
-        </div>
-        <div class="section">
-            <div class="blurb">
-                <h2>Passion For Learning</h2>
-                <h3 class='subheading'>The investment you make in yourself.</h3>
-                Few things are as rewarding as learning a new technology or technique that you can leverage to actual benefit in your daily life; be it personal or
-                professional. Whether it is SVG Filters, Service Worker, or graph traversal algorithms, I find learning to be a fun activity in its own right and that 
-                it makes me a more well rounded developer. I try to spend at least a few days a month learning something new and find I thrive in an atmoshpere which 
-                encourages this personal growth.
-            </div>
-        </div>
-        <div class="section">
-            <div class="blurb">
-                <h2>Passion For User Experience</h2>
-                <h3 class='subheading'>Putting the user first.</h3>
-                <p>One of the things which I find the most reward in is creating an interesting and fun user experience. Spending excessive amounts of time tweaking
-                    the easing of an animation until it feels "just right." But user experience is more than just flashy animations and effects on high-end desktops.
-                    It's the performance of animations, keeping them as close to 60FPS and jank free. Keeping Page load speed fast and responsive. Making the content
-                    accessible to a wider audience, including those with disabilities or impairment. 
-                </p>
-            </div>
-        </div>
+        
     </div>
-    
+    <link rel='stylesheet' href='/assets/css/styles.css' />
+    <script src='/assets/js/scripts.js' defer></script>
 </body>
 </html>

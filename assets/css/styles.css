@@ -1,0 +1,27 @@
+
+/** Wave motion **/
+#p1,#p3,#p4,#p5{
+    transform-origin:bottom;
+    transform:none;
+    transition:transform 15s;
+    transition-timing-function: cubic-bezier(0.3, 0.00, 0.6, 1);
+}
+
+.transform #p1{
+    transform:translateX(-5%) translateY(10%) scale(1.9, 1.3);
+}
+.transform #p3{
+    transform:translateY(1%) scale(2.3,1.1) skew(-8deg);
+}
+.transform #p4{
+    transform:translateY(21%) scale(1.7,1.2) skew(-6deg);
+}
+.transform #p5{
+    transform:translateY(23%) scale(1.3);
+}
+
+@media (prefers-reduced-motion: reduce){
+    #p1,#p3,#p4,#p5{
+        transition: none;
+    }
+}
