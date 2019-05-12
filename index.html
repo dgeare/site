@@ -56,7 +56,7 @@
         #first_swoosh{
             height: 56vw;
             width: 100%;
-            background-image: url(assets/swoosh.svg);
+            
             background-size: 163vw;
             background-position: 60% 0;
             background-repeat: no-repeat;
@@ -79,8 +79,9 @@
         #third_swoosh{
             position: relative;
             width: 100%;
-            height: 500px;
-            border:1px solid #333;
+            /* height: 500px; */
+            height: 230px;
+            /* border:1px solid #333; */
             overflow: hidden;
         }
         #third_swoosh2{
@@ -101,26 +102,42 @@
             transform: translate(-50%, -50%) scale(0);
             opacity: .5;
             background:linear-gradient(-90deg, #293c98, #7530d0);
+            
+        }
+        [on] #background_fill{
             animation-name:grow;
             animation-duration:1s;
             animation-iteration-count:1;
-            animation-delay:1s;
             animation-timing-function: cubic-bezier(0.38, 0.32, 0.76, 0.45);
             animation-fill-mode: forwards;
+        }
+        [will-change] #background_fill{
+            will-change: transform;
+        }
+        @media (prefers-reduced-motion: reduce){
+            #background_fill{
+                transform: translate(-50%, -50%) scale(1);
+                opacity:1;
+            }
+            [on] #background_fill{
+                animation:none;
+            }
         }
         .top_swoosh{
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 400px;
+            /* height: 400px; */
+            height: 240px;
         }
         .bottom_swoosh{
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 300px;
+            /* height: 300px; */
+            height: 180px;
         }
         .faux_mask{
             fill:var(--site-background-color);
@@ -320,6 +337,16 @@
                     </p>
                 </div>
             </div>
+        </div>
+        <div id="third_swoosh" class="section swoosh">
+            <div id='background_fill'></div>
+            <svg width="100%" height="300" viewBox="0 0 800 600" preserveAspectRatio="none" class='top_swoosh' xmlns="http://www.w3.org/2000/svg">
+                <!-- <path class='faux_mask' d="M 0 200 Q 200 450 500 200 Q 600 100 800 250 C 800 300 800 350 800 0 Q 150 0 0 0 Z" fill='red' /> -->
+                <path class='faux_mask' d="M 0 0 L 800 0 L 800 200 C 550 50 400 450 0 250 Z" />
+            </svg>
+            <svg width="100%" height="300" viewBox="0 0 800 600" preserveAspectRatio="none" class="bottom_swoosh" xmlns="http://www.w3.org/2000/svg">
+                <path class='faux_mask' d="M 0 600 L 800 600 L 800 400 C 550 150 350 800 0 200 Z" />
+            </svg>
         </div>
         <div class="section" wide-gap>
             <div class="content">
